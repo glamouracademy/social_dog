@@ -3,6 +3,9 @@ class DogsController < ApplicationController
   end
 
   def user_create
-    byebug
+
+    #User.create(name: )
+    #request.env["omniauth.auth"]
+    @user_name = request.env["omniauth.auth"]['info']['name']
   end
 end

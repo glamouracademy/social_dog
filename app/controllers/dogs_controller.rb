@@ -3,9 +3,13 @@ class DogsController < ApplicationController
   end
 
   def user_create
+    user = User.from_omniauth(env["omniauth.auth"])
+    dog[:user_id] = user.id
+    redirect_to root_url  
+  end
 
-    #User.create(name: )
-    #request.env["omniauth.auth"]
-    @user_name = request.env["omniauth.auth"]['info']['name']
+  def destroy
+    dog[:user_id] = nil
+    redirect_to root_url
   end
 end
